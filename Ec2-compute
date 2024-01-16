@@ -1,0 +1,15 @@
+Ec2 minimum image id and instance id is needed
+aws ec2 run-instance --image-id "ami-03f4878755434977f" --instane-type "t2.micro" --instance-name "Yogesh" 
+
+aws ec2 run-instances --image-id ami-03f4878755434977f --instance-type t2.micro --tag-specifications 
+'ResourceType=instance,Tags=[{Key=Name,Value=Yogesh_Bhagat}]'
+ 
+aws ec2 describe-instances --instance-id i-047167f07c66bfb43
+aws ec2 describe-instances --filters "Name=tag:Name,Values=Yogesh_Bhagat"
+aws ec2 describe-instances --filters "Name=tag:Env,Values=Prod"
+
+aws ec2 stop-instances --instance-id i-047167f07c66bfb43
+aws ec2 start-instances --instance-id i-047167f07c66bfb43
+
+aws ec2 modify-instance-attribute --instance-id i-047167f07c66bfb43 --instance-type t2.medium 
+Note : To modify the instance type ->instance should be in stopped state

@@ -1,0 +1,15 @@
+ VPC
+ 
+create Vpc 
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=MainVpc}]'
+aws ec2 describe-vpcs --vpc-id vpc-09327b92fb016b61c
+
+Modify vpc
+aws ec2 modify-vpc-attributes --vpc-id vpc-09327b92fb016b61c --enable-dns-hostname
+aws ec2 modify-vpc-attribute --vpc-id vpc-09327b92fb016b61c --enable-dns-hostname
+aws ec2 create-tags --resources vpc-04d9c9b7970d983d6 --tags Key=Name,Value=DefaultVpc
+
+Delete
+aws ec2 delete-vpc --vpc-id vpc-09327b92fb016b61c
+
+

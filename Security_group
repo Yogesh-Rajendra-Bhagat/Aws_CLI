@@ -1,0 +1,25 @@
+
+
+
+
+security group
+
+
+
+aws ec2 create-security-group --group-name Test_security_group --vpc-id vpc-04d9c9b7970d983d6 --description "mysg"
+
+aws ec2 describe-security-groups
+aws ec2 describe-security-groups --security-group-id vpc-04d9c9b7970d983d6
+
+
+aws ec2 authorize-security-group-ingress --group-id sg-04b8e05cc9308e2a1 --protocol tcp --port 22 --cidr 0.0.0.0/8 
+aws ec2 revoke-security-group-ingress --group-id sg-04b8e05cc9308e2a1 --protocol tcp --port 22 --cidr 0.0.0.0/16
+
+aws ec2 authorize-security-group-egress --group-id sg-04b8e05cc9308e2a1 --port 80 --protocol tcp --cidr 0.0.0.0/8
+aws ec2 revoke-security-group-egress --group-id sg-04b8e05cc9308e2a1 --protocol tcp --port 80 --cidr 0.0.0.0/8
+
+aws ec2 authorize-security-group-ingress --group-id sg-04b8e05cc9308e2a1 --protocol tcp --port 22 --cidr 0.0.0.0/16
+
+aws ec2-revoke-security-group-ingress --group-id sg-04b8e05cc9308e2a1 --protocol tcp --port 22 --cidr 0.0.0.0/16
+aws ec2 delete-security-group --group-id sg-04b8e05cc9308e2a1
+

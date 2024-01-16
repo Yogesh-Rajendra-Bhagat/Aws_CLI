@@ -1,0 +1,40 @@
+
+
+
+
+
+Volume (minimum az and size should be specified)
+
+aws ec2 create-volume --size 3 --availability-zone ap-south-1a
+
+aws ec2 describe-volumes
+aws ec2 delete-volume --volume-id vol-07a5f6b23e4465eb9 
+aws ec2 describe-volume-status --volume-id vol-0e70a019fbb2dec22
+
+
+aws ec2 modify-volume --volume-id vol-07a5f6b23e4465eb9 --size 4
+
+aws ec2 delete-volume --volume-id vol-07a5f6b23e4465eb9
+
+both must be in same availability zone
+aws ec2 attach-volume --volume-id vol-0e70a019fbb2dec22 --instance-id i-03d948459fd1543b5 --device /dev/sdf
+
+
+Snapshots(Note Snapshot is created in same Az as that of volume )
+
+so we create snapshot in different region as required from this new created snapshot)
+now with new copied snapshot create the volume
+
+aws ec2 create-snapshot --volume-id vol-0fa2d8c385c334ebc 
+
+
+aws ec2 copy-snapshot --source-snapshot-id snap-083aaa95f292e97fc --source-region ap-south-1 --destination-region ap-south-2a
+
+
+ aws ec2 create-volume --snapshot-id snap-083aaa95f292e97fc --availability-zone ap-south-1a --size 2
+ aws ec2 delete-snapshot --snapshot-id snap-083aaa95f292e97fc
+ aws ec2 delete-volume --volume-id vol-009cb8076b70c54e4
+ 
+ 
+ 
+ 
